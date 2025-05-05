@@ -15,10 +15,10 @@ public class BaseController : MonoBehaviour
 
     protected virtual void Update()
     {
-        Move();
+        Movement();
     }
 
-    public void Move()
+    public void Movement()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
