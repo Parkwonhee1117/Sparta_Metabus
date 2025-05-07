@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationHandler : MonoBehaviour
 {
-    private static readonly int IsMoving = Animator.StringToHash("IsMove");
+    private static readonly int _isMoving = Animator.StringToHash("IsMove");
 
     protected Animator animator;
 
@@ -18,7 +18,7 @@ public class AnimationHandler : MonoBehaviour
     {
         if(animator != null)
         {
-            animator.SetBool(IsMoving, obj.magnitude > 0.5f);
+            animator.SetBool(_isMoving, obj.magnitude > 0.5f);
         }
         else
         {

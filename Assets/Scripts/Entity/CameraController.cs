@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform target;
-    float offsetX;
-    float offsetY;
+    float _offsetX;
+    float _offsetY;
 
     // Start is called before the first frame update
     void Start()
@@ -15,8 +15,8 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-        offsetX = transform.position.x - target.position.x;
-        offsetY = transform.position.y - target.position.y;
+        _offsetX = transform.position.x - target.position.x;
+        _offsetY = transform.position.y - target.position.y;
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
         }
 
         Vector3 pos = transform.position;
-        pos = new Vector3(target.position.x + offsetX, target.position.y + offsetY, transform.position.z);
+        pos = new Vector3(target.position.x + _offsetX, target.position.y + _offsetY, transform.position.z);
         transform.position = pos;
     }
 }

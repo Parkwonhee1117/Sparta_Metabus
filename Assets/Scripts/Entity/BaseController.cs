@@ -5,12 +5,11 @@ using UnityEngine;
 public class BaseController : MonoBehaviour
 {
     protected AnimationHandler animationHandler;
-
-
-    public float MoveSpeed = 5f;
+    protected StatHandler statHandler;
     protected virtual void Awake()
     {
         animationHandler = GetComponent<AnimationHandler>();
+        statHandler = GetComponent<StatHandler>();
     }
 
     protected virtual void Update()
@@ -25,7 +24,7 @@ public class BaseController : MonoBehaviour
 
         Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
 
-        transform.position += (Vector3)(moveDirection * MoveSpeed * Time.deltaTime);
+        transform.position += (Vector3)(moveDirection * statHandler.Speed * Time.deltaTime);
 
         animationHandler.Move(moveDirection);
         Rotate(moveDirection);

@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour
 {
-    bool isPlayerInTrigger = false;
+    PlayerController playerController;
+    bool _isPlayerInTrigger = false;
+
+    void Awake()
+    {
+        playerController = FindAnyObjectByType<PlayerController>();
+    }
 
     void Update()
     {
-        if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.F))
+        if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("안녕하세요");
+            Debug.Log("게임을 시작합니다.");
+            playerController.transform.position = new Vector3(40, 0, 0);
+            GameManager.IsMiniGameStart = true;
         }
     }
 
@@ -19,8 +27,8 @@ public class NPCController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("상호작용 F");
-            isPlayerInTrigger = true;
+            Debug.Log("화살 피하기 게임을 시작하겠습니까? (상호작용 F)");
+            _isPlayerInTrigger = true;
         }
 
     }
@@ -29,7 +37,7 @@ public class NPCController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            isPlayerInTrigger = false;
+            _isPlayerInTrigger = false;
         }
     }
 }
