@@ -38,7 +38,11 @@ public class ProjectileController : MonoBehaviour
         if(GameManager.ProjectileCount <= 0)
         {
             GameManager.Wave++;
-            projectileManager.Speed++;
+            if(projectileManager.Speed <= 20)
+                projectileManager.Speed++;
+            else
+                projectileManager.Speed = 20;
+
             projectileManager.ArrowSpawn();
         }
         
@@ -61,7 +65,10 @@ public class ProjectileController : MonoBehaviour
             if (GameManager.ProjectileCount <= 0)
             {
                 GameManager.Wave++;
-                projectileManager.Speed++;
+                if (projectileManager.Speed <= 20)
+                    projectileManager.Speed++;
+                else
+                    projectileManager.Speed = 20;
                 projectileManager.ArrowSpawn();
             }
         }

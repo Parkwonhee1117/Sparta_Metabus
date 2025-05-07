@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         {
             playerController.Death();
             uiManager.GameOver();
+            
             _isSpawneProjectiles = false;
             statHandler.Health = 100;
             Wave = 0;

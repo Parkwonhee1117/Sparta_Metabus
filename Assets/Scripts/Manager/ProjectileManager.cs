@@ -61,6 +61,11 @@ public class ProjectileManager : MonoBehaviour
 
     }
 
+    public IEnumerator WaitUntilCollision()
+    {
+        yield return new WaitUntil(() => GameManager.ProjectileCount == 0);
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (_spawnPoint == null) return;
