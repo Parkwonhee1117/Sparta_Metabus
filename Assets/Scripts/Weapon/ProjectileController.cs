@@ -11,11 +11,13 @@ public class ProjectileController : MonoBehaviour
 
     ProjectileManager projectileManager;
     StatHandler statHandler;
+    UIManager uIManager;
 
     void Awake()
     {
         projectileManager = FindAnyObjectByType<ProjectileManager>();
         statHandler = FindAnyObjectByType<StatHandler>();
+        uIManager = FindAnyObjectByType<UIManager>();
     }
 
     public void SetDirection(Vector3 direction, float speed)
@@ -52,6 +54,7 @@ public class ProjectileController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             statHandler.Health -= _damage;
+            uIManager.ChangePlayerHP(statHandler.Health, 100);
             Destroy(this.gameObject);
             GameManager.ProjectileCount--;
 

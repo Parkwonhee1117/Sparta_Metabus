@@ -7,10 +7,12 @@ public class NPCController : MonoBehaviour
 {
     PlayerController playerController;
     bool _isPlayerInTrigger = false;
+    UIManager uiManager;
 
     void Awake()
     {
         playerController = FindAnyObjectByType<PlayerController>();
+        uiManager = FindAnyObjectByType<UIManager>();
     }
 
     void Update()
@@ -18,6 +20,7 @@ public class NPCController : MonoBehaviour
         if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("게임을 시작합니다.");
+            uiManager.SetPlayGame();
             playerController.transform.position = new Vector3(40, 0, 0);
             GameManager.IsMiniGameStart = true;
         }

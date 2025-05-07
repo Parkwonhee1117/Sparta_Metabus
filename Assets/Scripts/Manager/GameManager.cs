@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
     public static int ProjectileCount = 0;
     public static int Wave = 1;
     public static bool IsMiniGameStart = false;
-
-    private bool _isSpawneProjectiles = false;
+    public static bool _isSpawneProjectiles = false;
+    
     private ProjectileManager projectileManager;
     private StatHandler statHandler;
     private PlayerController playerController;
+    private UIManager uIManager;
 
     void Awake()
     {
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         projectileManager = GetComponentInChildren<ProjectileManager>();
         statHandler = FindAnyObjectByType<StatHandler>();
         playerController = FindAnyObjectByType<PlayerController>();
+        uIManager = FindAnyObjectByType<UIManager>();
     }
 
     void Update()
@@ -34,10 +36,12 @@ public class GameManager : MonoBehaviour
         if (statHandler.Health <= 0)
         {
             playerController.Death();
+            uIManager.GameOver();
             _isSpawneProjectiles = false;
             statHandler.Health = 100;
             Wave = 1;
             projectileManager.Speed = 4;
+            uIManager.ChangePlayerHP(statHandler.Health, 100);
         }
     }
 
