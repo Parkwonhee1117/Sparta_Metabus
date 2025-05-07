@@ -10,6 +10,7 @@ public class ProjectileManager : MonoBehaviour
     [Range(1,20)] public int Speed = 5;
 
     ProjectileController projectileController;
+    UIManager uiManager;
 
     public void ArrowSpawn()
     {
@@ -17,6 +18,8 @@ public class ProjectileManager : MonoBehaviour
         {
             int projectileNumber = Random.Range(1, 8);
             GameManager.ProjectileCount = projectileNumber;
+            uiManager = FindAnyObjectByType<UIManager>();
+            uiManager.SetPlayGame();
 
             GameObject randomPrefab = _weaponPrefabs[Random.Range(0, _weaponPrefabs.Count)];
             Rect randomSpawnArea = _spawnPoint[Random.Range(0, _spawnPoint.Count)];

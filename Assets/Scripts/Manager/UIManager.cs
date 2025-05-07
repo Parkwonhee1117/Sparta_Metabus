@@ -31,11 +31,13 @@ public class UIManager : MonoBehaviour
     public void SetPlayGame()
     {
         ChangeState(UIState.Game);
+        gameUI.ShowWave(GameManager.Wave);
     }
 
     public void GameOver()
     {
         ChangeState(UIState.Score);
+        scoreUI.UpdateWave(GameManager.Wave);
     }
 
     public void Lobby()

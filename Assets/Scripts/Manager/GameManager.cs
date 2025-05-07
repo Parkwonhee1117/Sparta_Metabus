@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     private ProjectileManager projectileManager;
     private StatHandler statHandler;
     private PlayerController playerController;
-    private UIManager uIManager;
+    private UIManager uiManager;
+    private ScoreUI scoreUI;
 
     void Awake()
     {
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
         projectileManager = GetComponentInChildren<ProjectileManager>();
         statHandler = FindAnyObjectByType<StatHandler>();
         playerController = FindAnyObjectByType<PlayerController>();
-        uIManager = FindAnyObjectByType<UIManager>();
+        uiManager = FindAnyObjectByType<UIManager>();
     }
 
     void Update()
@@ -36,12 +37,12 @@ public class GameManager : MonoBehaviour
         if (statHandler.Health <= 0)
         {
             playerController.Death();
-            uIManager.GameOver();
+            uiManager.GameOver();
             _isSpawneProjectiles = false;
             statHandler.Health = 100;
-            Wave = 1;
+            Wave = 0;
             projectileManager.Speed = 4;
-            uIManager.ChangePlayerHP(statHandler.Health, 100);
+            uiManager.ChangePlayerHP(statHandler.Health, 100);
         }
     }
 
