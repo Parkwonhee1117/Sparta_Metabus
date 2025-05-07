@@ -1537,7 +1537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 100
-  _speed: 5
+  _speed: 10
 --- !u!1 &491466702
 GameObject:
   m_ObjectHideFlags: 0
@@ -6190,7 +6190,7 @@ MonoBehaviour:
     width: 22
     height: 1
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
-  _speed: 5
+  Speed: 5
 --- !u!1 &1991741260
 GameObject:
   m_ObjectHideFlags: 0
